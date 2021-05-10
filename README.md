@@ -5,4 +5,5 @@ Projeto desenvolvido durante treinamento oferecido pela empresa BRQ.
 As seguintes ferramentas foram usadas na construção do projeto:
 
 Android Studio
+
 Kotlin
