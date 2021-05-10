@@ -8,6 +8,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.App_BRQ" />
+        android:theme="@style/Theme.App_BRQ">
+        <activity android:name=".UI.LoginActivity"></activity>
+    </application>
 
 </manifest>
