@@ -7,5 +7,9 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="NossoVerde">#124A00</color>
+    <color name="Cor1">#124A00</color>
+    <color name="Cor2">#76F94B</color>
+    <color name="Cor3">#3EF700</color>
+    <color name="Cor4">#397824</color>
+    <color name="Cor5">#31C400</color>
 </resources>
