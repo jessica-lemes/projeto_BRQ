@@ -10,7 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App_BRQ">
         <activity android:name=".UI.PrincipalActivity"></activity>
-        <activity android:name=".UI.LoginActivity" />
+        <activity android:name=".UI.CadastroActivity" />
+        <activity android:name=".UI.LoginActivity" >
+
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>
