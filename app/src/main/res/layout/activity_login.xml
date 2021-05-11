@@ -8,26 +8,11 @@
     android:background="@drawable/tela_padrao"
     tools:context=".UI.LoginActivity">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        android:background="@color/NossoVerde"
-        android:text="@string/valorBotao"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/InputSenha" />
+
+
 
     <EditText
-        android:id="@+id/InputEmail"
+        android:id="@+id/inputEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -35,16 +20,16 @@
         android:layout_marginEnd="16dp"
         android:drawableEnd="@drawable/ic_email_cinza_24"
         android:ems="10"
-        android:hint="@string/playceholder_email"
+        android:hint="@string/placeholder_email"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/InputSenha"
+        app:layout_constraintBottom_toTopOf="@+id/inputSenha"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/textUsuario" />
 
     <EditText
-        android:id="@+id/InputSenha"
+        android:id="@+id/inputSenha"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -52,26 +37,56 @@
         android:layout_marginEnd="16dp"
         android:drawableEnd="@drawable/ic_senha_cinza_24"
         android:ems="10"
-        android:hint="@string/playceholder_senha"
+        android:hint="@string/placeholder_senha"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/btnLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/InputEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/inputEmail" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/textUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bem-Vindo"
+        android:text="@string/bem_vindo"
         android:textColor="#FFFFFF"
-        android:textSize="45sp"
-        app:layout_constraintBottom_toTopOf="@+id/InputEmail"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@+id/inputEmail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bem-Vindo"
+        android:textColor="#FFFFFF"
+        android:textSize="45sp"
+        app:layout_constraintBottom_toTopOf="@+id/inputEmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/valorBotao"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputSenha" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
