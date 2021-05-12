@@ -12,7 +12,7 @@
 
 
     <EditText
-        android:id="@+id/inputEmail"
+        android:id="@+id/inputEmailCad"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -22,14 +22,14 @@
         android:ems="10"
         android:hint="@string/placeholder_email"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/inputSenha"
+        app:layout_constraintBottom_toTopOf="@+id/inputSenhaCad"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textUsuario" />
 
     <EditText
-        android:id="@+id/inputSenha"
+        android:id="@+id/inputSenhaCad"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -38,12 +38,12 @@
         android:drawableEnd="@drawable/ic_senha_cinza_24"
         android:ems="10"
         android:hint="@string/placeholder_senha"
-        android:inputType="textEmailAddress"
+        android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/btnLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/inputEmailCad" />
 
     <TextView
         android:id="@+id/textUsuario"
@@ -52,7 +52,7 @@
         android:text="@string/bem_vindo"
         android:textColor="#FFFFFF"
         android:textSize="40sp"
-        app:layout_constraintBottom_toTopOf="@+id/inputEmail"
+        app:layout_constraintBottom_toTopOf="@+id/inputEmailCad"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -66,7 +66,7 @@
         android:text="Bem-Vindo"
         android:textColor="#FFFFFF"
         android:textSize="45sp"
-        app:layout_constraintBottom_toTopOf="@+id/inputEmail"
+        app:layout_constraintBottom_toTopOf="@+id/inputEmailCad"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -86,7 +86,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputSenha" />
+        app:layout_constraintTop_toBottomOf="@+id/inputSenhaCad" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
