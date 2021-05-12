@@ -38,7 +38,7 @@
         android:drawableEnd="@drawable/ic_senha_cinza_24"
         android:ems="10"
         android:hint="@string/placeholder_senha"
-        android:inputType="textEmailAddress"
+        android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/btnLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
