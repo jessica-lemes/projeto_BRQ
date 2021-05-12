@@ -1,4 +1,4 @@
-package com.example.app_brq.UI
+ package com.example.app_brq.UI
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -36,17 +36,60 @@ class CadastroActivity : AppCompatActivity() {
         telacad = findViewById(R.id.TelaCad)
     }
 
-    private fun carregarEventos() {
-        btn.setOnClickListener {
-            if(nome.length() <= 0  || cpf.length() == 0 && email.length() == 0 && senha.length() == 0
-                && ConfirmSenha.length()==0) {
-                btn.text = "ERRO"
-                }else{
-                var intent = Intent(this,PrincipalActivity::class.java)
-                startActivity(intent)
-            }
+    fun validarCamposVazio():Boolean {
+
+        nome.text.apply {
+            val valor = this.toString()
+            val naoValido = (valor.length < 3)
+            if(naoValido){
+                nome.error = "Nome Invalido"
+            }else{
+                nome.error = null
             }
         }
+        cpf.text.apply {
+            val valor = this.toString()
+            val naoValido = (valor.length < 11)
+            if(naoValido){
+                cpf.error = "cpf Invalido necessario 11 dgitos"
+            }else{
+                cpf.error = null
+            }
+        }
+        email.text.apply {
+            val valor = this.toString()
+            val naoValido = (valor.length < 7)
+            if(naoValido){
+                email.error = "E-mail Invalido"
+            }else{
+                email.error = null
+            }
+        }
+        senha.text.apply {
+            val valor = this.toString()
+            val naoValido = (valor.length < 6)
+            if(naoValido){
+                senha.error = "senha incorreta Invalido"
+            }else{
+                senha.error = null
+            }
+        }
+        ConfirmSenha.text.apply {
+            val valor = this.toString()
+            val valorSenha = senha.text.toString()
+            val naoValido = valorSenha != valor
+            if(naoValido){
+                ConfirmSenha.error = "Senha nao confere"
+            }else{
+                ConfirmSenha.error = null
+            }
+        }
+        return true
     }
-//
-//
+    private fun carregarEventos() {
+                btn.setOnClickListener{
+                    val res = validarCamposVazio()
+                    println(res)
+              }
+            }
+        }
