@@ -9,5 +9,5 @@
     <string name="placeholder_email">Digite Seu E-mail</string>
     <string name="placeholder_senha">Digite Sua Senha</string>
     <string name="placeholder_confirmaSenha">Confirme Sua Senha</string>
-    <string name="bem_vindo">Usuário</string>
+    <string name="bem_vindo">Olá, usuário</string>
 </resources>
