@@ -24,8 +24,6 @@ class CadastroActivity : AppCompatActivity() {
         carregarEventos()
     }
 
-
-
     private fun carregarElementos() {
         nome = findViewById(R.id.inputNome)
         cpf = findViewById(R.id.inputCPF)
