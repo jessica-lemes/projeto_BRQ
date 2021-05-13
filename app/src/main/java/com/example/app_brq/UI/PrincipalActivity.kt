@@ -18,7 +18,7 @@ class PrincipalActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R .layout.activity_principal)
+        setContentView(R.layout.activity_principal)
         carregarElementos()
         carregarEventos()
     }
@@ -30,15 +30,17 @@ class PrincipalActivity : AppCompatActivity() {
 
     private fun carregarEventos() {
         configuraCalendarView()
-            }
+    }
 
 
     fun adicionarReceita(view: View){
-        //abrir tela de receita
+        val intent = Intent(this,ReceitasActivity::class.java)
+        startActivity(intent)
     }
 
     fun adicionarDespesa(view: View){
-        //abrir tela de despesa
+        val intent = Intent(this,DespesasActivity::class.java)
+        startActivity(intent)
     }
 
     fun configuraCalendarView(){
