@@ -24,13 +24,11 @@ class CadastroActivity : AppCompatActivity() {
         carregarEventos()
     }
 
-
-
     private fun carregarElementos() {
         nome = findViewById(R.id.inputNome)
         cpf = findViewById(R.id.inputCPF)
-        email = findViewById(R.id.inputEmailCad)
-        senha = findViewById(R.id.inputSenhaCad)
+        email = findViewById(R.id.inputEmail)
+        senha = findViewById(R.id.inputSenha)
         ConfirmSenha = findViewById(R.id.inputConfirmaSenha)
         btn = findViewById(R.id.btnCadastrar)
         telacad = findViewById(R.id.TelaCad)

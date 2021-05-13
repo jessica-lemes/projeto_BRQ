@@ -36,14 +36,14 @@
         android:ems="10"
         android:hint="@string/placeholder_CPF"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/inputEmailCad"
+        app:layout_constraintBottom_toTopOf="@+id/inputEmail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inputNome" />
 
     <EditText
-        android:id="@+id/inputEmailCad"
+        android:id="@+id/inputEmail"
         android:layout_width="379dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -53,14 +53,14 @@
         android:ems="10"
         android:hint="@string/placeholder_email"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/inputSenhaCad"
+        app:layout_constraintBottom_toTopOf="@+id/inputSenha"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inputCPF" />
 
     <EditText
-        android:id="@+id/inputSenhaCad"
+        android:id="@+id/inputSenha"
         android:layout_width="379dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -74,7 +74,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputEmailCad" />
+        app:layout_constraintTop_toBottomOf="@+id/inputEmail" />
 
     <EditText
         android:id="@+id/inputConfirmaSenha"
@@ -91,7 +91,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputSenhaCad" />
+        app:layout_constraintTop_toBottomOf="@+id/inputSenha" />
 
     <Button
         android:id="@+id/btnCadastrar"
