@@ -1,4 +1,4 @@
-package com.example.app_brq.UI
+ package com.example.app_brq.UI
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -27,24 +27,29 @@ class CadastroActivity : AppCompatActivity() {
     private fun carregarElementos() {
         nome = findViewById(R.id.inputNome)
         cpf = findViewById(R.id.inputCPF)
-        email = findViewById(R.id.inputEmail)
+        email = findViewById(R.id.in)
         senha = findViewById(R.id.inputSenha)
         ConfirmSenha = findViewById(R.id.inputConfirmaSenha)
         btn = findViewById(R.id.btnCadastrar)
         telacad = findViewById(R.id.TelaCad)
     }
-
     private fun carregarEventos() {
-        btn.setOnClickListener {
-            if(nome.length() <= 0  || cpf.length() == 0 && email.length() == 0 && senha.length() == 0
-                && ConfirmSenha.length()==0) {
-                btn.text = "ERRO"
-                }else{
-                var intent = Intent(this,PrincipalActivity::class.java)
-                startActivity(intent)
-            }
+                btn.setOnClickListener{
+                    if (nome.text.isEmpty() == true){
+                        nome.error = "nome Vazio"
+                    } else if (cpf.text.isEmpty() == true){
+                        cpf.error = "CPF Invalido"
+                    }else if (email.text.isEmpty() == true){
+                        email.error = "vazio"
+                    }else if (senha.text.isEmpty() == true){
+                        senha.error = " Vazio"
+                    }else if(ConfirmSenha.text.isEmpty() == true || ConfirmSenha.text.toString() != senha.text.toString()) {
+                        ConfirmSenha.error = " vazio"
+                        }else {
+                        Intent(this, PrincipalActivity::class.java).apply {
+                            startActivity(this)
+                        }
+                    }
+              }
             }
         }
-    }
-//
-//

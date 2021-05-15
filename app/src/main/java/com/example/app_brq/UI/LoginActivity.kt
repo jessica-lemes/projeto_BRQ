@@ -5,35 +5,43 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
 import com.example.app_brq.R
 
-class LoginActivity : AppCompatActivity() {
-    lateinit var campoEmail : EditText
-    lateinit var campoSenha : EditText
-    lateinit var botaoEnviar : Button
+class LoginActivity() : AppCompatActivity() {
+    lateinit var campoEmail: EditText
+    lateinit var campoSenha: EditText
+    lateinit var botaoEnviar: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         carregarElementos()
         carregarEventos()
     }
+
     private fun carregarElementos() {
-        campoEmail = findViewById(R.id.inputEmail)
+        campoEmail = findViewById(R.id.inputEmailP)
         campoSenha = findViewById(R.id.inputSenha)
         botaoEnviar = findViewById(R.id.btnLogin)
     }
+
     private fun carregarEventos() {
         botaoEnviar.setOnClickListener {
-            val email =  campoEmail.text.toString()
+            val email = campoEmail.text.toString()
             val senha = campoSenha.text.toString()
-            if(email != "Gabriel" && email != "Jessica" && email != "Flavia"){
-                val intent = Intent(this,CadastroActivity::class.java)
-                startActivity(intent)
+            if (email.isEmpty() == true){
+                campoEmail.error = "campo em branco"
+
+            }else if ((email != "gabriel@brq.com" && senha != "123") || (email != "jessica@brq.com" && senha != "123") || (email != "flavia@brq.com" && senha != "123")) {
+                Intent(this,CadastroActivity::class.java).apply {
+                    startActivity(this)
+                }
             }else{
-                val intent = Intent(this,PrincipalActivity::class.java)
-                startActivity(intent)
+                Intent(this,PrincipalActivity::class.java).apply {
+                    startActivity(this)
+                }
             }
         }
     }
 }
+
