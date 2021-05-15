@@ -27,67 +27,30 @@ class CadastroActivity : AppCompatActivity() {
     private fun carregarElementos() {
         nome = findViewById(R.id.inputNome)
         cpf = findViewById(R.id.inputCPF)
-        email = findViewById(R.id.inputEmail)
-        senha = findViewById(R.id.inputSenha)
+        email = findViewById(R.id.inputEmailCad)
+        senha = findViewById(R.id.inputSenhaCad)
         ConfirmSenha = findViewById(R.id.inputConfirmaSenha)
         btn = findViewById(R.id.btnCadastrar)
         telacad = findViewById(R.id.TelaCad)
     }
 
-    fun validarCamposVazio():Boolean {
-
-        nome.text.apply {
-            val valor = this.toString()
-            val naoValido = (valor.length < 3)
-            if(naoValido){
-                nome.error = "Nome Invalido"
-            }else{
-                nome.error = null
-            }
-        }
-        cpf.text.apply {
-            val valor = this.toString()
-            val naoValido = (valor.length < 11)
-            if(naoValido){
-                cpf.error = "cpf Invalido necessario 11 dgitos"
-            }else{
-                cpf.error = null
-            }
-        }
-        email.text.apply {
-            val valor = this.toString()
-            val naoValido = (valor.length < 7)
-            if(naoValido){
-                email.error = "E-mail Invalido"
-            }else{
-                email.error = null
-            }
-        }
-        senha.text.apply {
-            val valor = this.toString()
-            val naoValido = (valor.length < 6)
-            if(naoValido){
-                senha.error = "senha incorreta Invalido"
-            }else{
-                senha.error = null
-            }
-        }
-        ConfirmSenha.text.apply {
-            val valor = this.toString()
-            val valorSenha = senha.text.toString()
-            val naoValido = valorSenha != valor
-            if(naoValido){
-                ConfirmSenha.error = "Senha nao confere"
-            }else{
-                ConfirmSenha.error = null
-            }
-        }
-        return true
-    }
     private fun carregarEventos() {
                 btn.setOnClickListener{
-                    val res = validarCamposVazio()
-                    println(res)
+                    if (nome.text.isEmpty() == true){
+                        nome.error = "nome Vazio"
+                    } else if (cpf.text.isEmpty() == true){
+                        cpf.error = "CPF Invalido"
+                    }else if (email.text.isEmpty() == true){
+                        email.error = "vazio"
+                    }else if (senha.text.isEmpty() == true){
+                        senha.error = " Vazio"
+                    }else if(ConfirmSenha.text.isEmpty() == true || ConfirmSenha.text.toString() != senha.text.toString()) {
+                        ConfirmSenha.error = " vazio"
+                        }else {
+                        Intent(this, PrincipalActivity::class.java).apply {
+                            startActivity(this)
+                        }
+                    }
               }
             }
         }
