@@ -20,13 +20,16 @@ class PrincipalActivity : AppCompatActivity() {
     lateinit var textUsuario: TextView
     lateinit var textSaldo: TextView
     lateinit var recyclerView: RecyclerView
-    lateinit var arrayDeMovimentacao: ArrayList<Movimentacao>
-    private var movimentacao = Movimentacao(0.0, "","","" ,"")
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_principal)
+        carregarElementos()
+        carregarEventos()
+    }
+
+    override fun onRestart() {
+        super.onRestart()
         carregarElementos()
         carregarEventos()
     }
@@ -41,31 +44,34 @@ class PrincipalActivity : AppCompatActivity() {
     private fun carregarEventos() {
         configuraCalendarView()
         atualizaRecycler()
-
     }
 
     fun adicionarReceita(view: View){
         val intent = Intent(this,ReceitasActivity::class.java)
-        //intent.putExtra("listaMovimentacoesBanco", arrayDeMovimentacao)
         startActivity(intent)
     }
 
     fun adicionarDespesa(view: View){
         val intent = Intent(this,DespesasActivity::class.java)
-        intent.putExtra("listaMovimentacoesBanco", arrayDeMovimentacao)
         startActivity(intent)
     }
 
     fun configuraCalendarView(){
-        var meses = arrayOf("Janeiro", "Fevereiro", "Março","Abril","Maio","Junho", "Julho","Agosto" ,"Setembro", "Outubro", "Novembro", "Dezembro" )
+        val meses = arrayOf("Janeiro", "Fevereiro", "Março","Abril","Maio","Junho", "Julho","Agosto" ,"Setembro", "Outubro", "Novembro", "Dezembro" )
         calendarView.setTitleMonths(meses)
         calendarView.setOnMonthChangedListener(OnMonthChangedListener { widget, date ->  })
     }
 
     fun atualizaRecycler(){
-        arrayDeMovimentacao = movimentacao.carregaListaMovimentacoes()!!
-        recyclerView.adapter = AdapterMovimentacoes(arrayDeMovimentacao, this)
+        val lista: ArrayList<Movimentacao> = ListaGlobal.retornaListaMovimentacao()
+        recyclerView.adapter = AdapterMovimentacoes(lista, this)
         recyclerView.layoutManager = LinearLayoutManager(this)
     }
+
+//    fun atualizaSaldo(){
+//        var saldo = 0.0
+//        var lista: ArrayList<Movimentacao> = ListaGlobal.retornaListaMovimentacao()
+//        var valor: Movimentacao = lista[0]
+//    }
 
 }

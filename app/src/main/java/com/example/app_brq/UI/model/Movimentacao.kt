@@ -10,22 +10,7 @@ class Movimentacao(
         val tipoMovimentacao: String
 ): Serializable {
 
-
-    fun carregaListaMovimentacoes(): ArrayList<Movimentacao> {
-
-        val lista: ArrayList<Movimentacao> = ListaGlobal().retornaListaMovimentacao()
-
-//        val lista = arrayListOf<Movimentacao>()
-//        Movimentacao(120.50, "15/05/2021", "Salário", "Hora extra", "Receita").let {
-//            lista.add(it)
-//        }
-//        Movimentacao(-250.99, "18/05/2021", "Compras", "Compras no supermercado","Despesa").let {
-//            lista.add(it)
-//        }
-        return lista
-    }
-
     fun adicionaMovimentacao(){
-        ListaGlobal().adicionaMovimentacao(this)
+        ListaGlobal.adicionaMovimentacao(this)
     }
 }

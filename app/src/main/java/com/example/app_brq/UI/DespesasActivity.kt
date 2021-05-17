@@ -20,7 +20,6 @@ class DespesasActivity : AppCompatActivity() {
     lateinit var editTextDescricaoDespesa: TextView
     lateinit var fabDespesa: FloatingActionButton
 
-    lateinit var listaMovimentacoesBanco: ArrayList<Movimentacao>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +29,13 @@ class DespesasActivity : AppCompatActivity() {
         carregarEventos()
 
     }
+
+    override fun onRestart() {
+        super.onRestart()
+        carregarElementos()
+        carregarEventos()
+    }
+
     private fun carregarElementos() {
         recyclerDespesas = findViewById(R.id.recyclerDespesas)
         editTextValorDespesa = findViewById(R.id.editTextValorDespesa)
@@ -40,10 +46,7 @@ class DespesasActivity : AppCompatActivity() {
     }
 
     private fun carregarEventos() {
-        //Recuperando lista de movimentações pelo Bundle para popular
-        listaMovimentacoesBanco = intent.getSerializableExtra("listaMovimentacoesBanco") as ArrayList<Movimentacao>
-
-        atualizaRecycler(listaMovimentacoesBanco)
+        atualizaRecycler()
     }
 
     fun mostraDadoOnClick(view: View) {
@@ -53,14 +56,15 @@ class DespesasActivity : AppCompatActivity() {
         val categoria = editTextCategoriaDespesa.text
         val descricao = editTextDescricaoDespesa.text
 
-        val dados = Movimentacao( valorString.toDouble(), data.toString(), categoria.toString(), descricao.toString(), "Receita")
-
-        listaMovimentacoesBanco.add(dados)
-        atualizaRecycler(listaMovimentacoesBanco)
+        val dados = Movimentacao( valorString.toDouble(), data.toString(), categoria.toString(), descricao.toString(), "Despesa")
+        dados.adicionaMovimentacao()
+        atualizaRecycler()
     }
 
-    fun atualizaRecycler(listaMovimentacoesBanco: ArrayList<Movimentacao>) {
-        recyclerDespesas.adapter = AdapterMovimentacoes(listaMovimentacoesBanco, this)
+    fun atualizaRecycler() {
+        val lista: ArrayList<Movimentacao> = ListaGlobal.retornaListaMovimentacao()
+        var listaFiltrada = lista.filter { it.tipoMovimentacao=="Despesa" }
+        recyclerDespesas.adapter = AdapterMovimentacoes(ArrayList(listaFiltrada), this)
         recyclerDespesas.layoutManager = LinearLayoutManager(this)
     }
 }

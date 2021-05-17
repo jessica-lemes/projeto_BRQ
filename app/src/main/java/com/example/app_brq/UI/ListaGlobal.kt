@@ -4,16 +4,22 @@ import com.example.app_brq.UI.model.Movimentacao
 
 
 class ListaGlobal : Application() {
-    var arrayMovimentacaoGlobal: ArrayList<Movimentacao> = ArrayList()
 
-    fun adicionaMovimentacao(item: Movimentacao){
+    companion object{
 
-        arrayMovimentacaoGlobal.add(item)
+        var arrayMovimentacaoGlobal: ArrayList<Movimentacao> = ArrayList()
 
+        fun adicionaMovimentacao(item: Movimentacao){
+
+            arrayMovimentacaoGlobal.add(item)
+
+        }
+
+        fun retornaListaMovimentacao() : ArrayList<Movimentacao> {
+
+            return arrayMovimentacaoGlobal
+        }
     }
 
-    fun retornaListaMovimentacao() : ArrayList<Movimentacao> {
 
-        return arrayMovimentacaoGlobal
-    }
 }

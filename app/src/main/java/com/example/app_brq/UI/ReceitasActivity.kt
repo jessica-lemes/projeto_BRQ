@@ -10,7 +10,7 @@ import com.example.app_brq.R
 import com.example.app_brq.UI.adapter.AdapterMovimentacoes
 import com.example.app_brq.UI.model.Movimentacao
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.example.app_brq.UI.ListaGlobal
+
 
 class ReceitasActivity : AppCompatActivity() {
 
@@ -21,8 +21,6 @@ class ReceitasActivity : AppCompatActivity() {
     lateinit var editTextDescricaoReceita: TextView
     lateinit var fabReceita: FloatingActionButton
 
-    lateinit var listaMovimentacoesBanco: ArrayList<Movimentacao>
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_receitas)
@@ -31,6 +29,13 @@ class ReceitasActivity : AppCompatActivity() {
         carregarEventos()
 
     }
+
+    override fun onRestart() {
+        super.onRestart()
+        carregarElementos()
+        carregarEventos()
+    }
+
     private fun carregarElementos() {
         recyclerReceitas = findViewById(R.id.recyclerReceitas)
         editTextValorReceita = findViewById(R.id.editTextValorReceita)
@@ -42,9 +47,6 @@ class ReceitasActivity : AppCompatActivity() {
     }
 
     private fun carregarEventos() {
-        //Recuperando lista de movimentações pelo Bundle para popular
-        //listaMovimentacoesBanco = intent.getSerializableExtra("listaMovimentacoesBanco") as ArrayList<Movimentacao>
-
         atualizaRecycler()
     }
 
@@ -56,14 +58,15 @@ class ReceitasActivity : AppCompatActivity() {
         val categoria = editTextCategoriaReceita.text
         val descricao = editTextDescricaoReceita.text
 
-        val m = Movimentacao(valorString.toDouble(), data.toString(),categoria.toString(),descricao.toString() ,"Receita")
-        m.adicionaMovimentacao()
+        val dados = Movimentacao(valorString.toDouble(), data.toString(),categoria.toString(),descricao.toString() ,"Receita")
+        dados.adicionaMovimentacao()
         atualizaRecycler()
     }
 
     fun atualizaRecycler(){
-        val lista: ArrayList<Movimentacao> = ListaGlobal().retornaListaMovimentacao()
-        recyclerReceitas.adapter = AdapterMovimentacoes(lista, this)
+        val lista: ArrayList<Movimentacao> = ListaGlobal.retornaListaMovimentacao()
+        var listaFiltrada = lista.filter { it.tipoMovimentacao == "Receita" }
+        recyclerReceitas.adapter = AdapterMovimentacoes(ArrayList(listaFiltrada), this)
         recyclerReceitas.layoutManager = LinearLayoutManager(this)
     }
 
