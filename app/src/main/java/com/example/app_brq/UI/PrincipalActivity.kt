@@ -13,41 +13,38 @@ import com.example.app_brq.UI.model.Movimentacao
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView
 import com.prolificinteractive.materialcalendarview.OnMonthChangedListener
 
+
 class PrincipalActivity : AppCompatActivity() {
 
     lateinit var calendarView: MaterialCalendarView
     lateinit var textUsuario: TextView
     lateinit var textSaldo: TextView
     lateinit var recyclerView: RecyclerView
-    lateinit var arrayDeMovimentacao: ArrayList<Movimentacao>
-    var movimentacao = Movimentacao(0.0, "","","" )
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_principal)
         carregarElementos()
         carregarEventos()
-
-        arrayDeMovimentacao = movimentacao.carregaListaMovimentacoes()
-        recyclerView.adapter = AdapterMovimentacoes(arrayDeMovimentacao, this)
-        recyclerView.layoutManager = LinearLayoutManager(this)
     }
+
+    override fun onRestart() {
+        super.onRestart()
+        carregarElementos()
+        carregarEventos()
+    }
+
     private fun carregarElementos() {
         calendarView = findViewById(R.id.calendarView)
         textSaldo = findViewById(R.id.textSaldo)
         textUsuario = findViewById(R.id.textUsuario)
         recyclerView = findViewById(R.id.recyclerPrincipal)
-
     }
 
     private fun carregarEventos() {
         configuraCalendarView()
-
+        atualizaRecycler()
     }
-
-
-
 
     fun adicionarReceita(view: View){
         val intent = Intent(this,ReceitasActivity::class.java)
@@ -60,9 +57,21 @@ class PrincipalActivity : AppCompatActivity() {
     }
 
     fun configuraCalendarView(){
-        var meses = arrayOf<String>("Janeiro", "Fevereiro", "Março","Abril","Maio","Junho", "Julho","Agosto" ,"Setembro", "Outubro", "Novembro", "Dezembro" )
+        val meses = arrayOf("Janeiro", "Fevereiro", "Março","Abril","Maio","Junho", "Julho","Agosto" ,"Setembro", "Outubro", "Novembro", "Dezembro" )
         calendarView.setTitleMonths(meses)
         calendarView.setOnMonthChangedListener(OnMonthChangedListener { widget, date ->  })
     }
+
+    fun atualizaRecycler(){
+        val lista: ArrayList<Movimentacao> = ListaGlobal.retornaListaMovimentacao()
+        recyclerView.adapter = AdapterMovimentacoes(lista, this)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+    }
+
+//    fun atualizaSaldo(){
+//        var saldo = 0.0
+//        var lista: ArrayList<Movimentacao> = ListaGlobal.retornaListaMovimentacao()
+//        var valor: Movimentacao = lista[0]
+//    }
 
 }
