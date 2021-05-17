@@ -3,6 +3,7 @@
     package="com.example.app_brq">
 
     <application
+        android:name=".UI.ListaGlobal"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -11,15 +12,16 @@
         android:theme="@style/Theme.App_BRQ">
         <activity android:name=".UI.DespesasActivity" android:theme="@style/Theme.Despesas"/>
         <activity android:name=".UI.ReceitasActivity" android:theme="@style/Theme.Receitas"/>
-        <activity android:name=".UI.PrincipalActivity" />
+        <activity android:name=".UI.PrincipalActivity">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity android:name=".UI.LoginActivity" />
         <activity android:name=".UI.CadastroActivity" />
         <activity android:name=".UI.SplashActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

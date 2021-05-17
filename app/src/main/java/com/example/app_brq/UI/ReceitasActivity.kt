@@ -2,13 +2,15 @@ package com.example.app_brq.UI
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.app_brq.R
 import com.example.app_brq.UI.adapter.AdapterMovimentacoes
 import com.example.app_brq.UI.model.Movimentacao
-import com.github.clans.fab.FloatingActionButton
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.example.app_brq.UI.ListaGlobal
 
 class ReceitasActivity : AppCompatActivity() {
 
@@ -19,8 +21,7 @@ class ReceitasActivity : AppCompatActivity() {
     lateinit var editTextDescricaoReceita: TextView
     lateinit var fabReceita: FloatingActionButton
 
-    lateinit var arrayDeReceitas: ArrayList<Movimentacao>
-    var movimentacao = Movimentacao(0.0, "","","" )
+    lateinit var listaMovimentacoesBanco: ArrayList<Movimentacao>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,9 +30,6 @@ class ReceitasActivity : AppCompatActivity() {
         carregarElementos()
         carregarEventos()
 
-        arrayDeReceitas = movimentacao.carregaListaReceitas()
-        recyclerReceitas.adapter = AdapterMovimentacoes(arrayDeReceitas, this)
-        recyclerReceitas.layoutManager = LinearLayoutManager(this)
     }
     private fun carregarElementos() {
         recyclerReceitas = findViewById(R.id.recyclerReceitas)
@@ -39,10 +37,34 @@ class ReceitasActivity : AppCompatActivity() {
         editTextDataReceita = findViewById(R.id.editTextDataReceita)
         editTextCategoriaReceita = findViewById(R.id.editTextCategoriaReceita)
         editTextDescricaoReceita = findViewById(R.id.editTextDescricaoReceita)
+        fabReceita = findViewById(R.id.fabReceita)
 
     }
 
     private fun carregarEventos() {
+        //Recuperando lista de movimentações pelo Bundle para popular
+        //listaMovimentacoesBanco = intent.getSerializableExtra("listaMovimentacoesBanco") as ArrayList<Movimentacao>
 
+        atualizaRecycler()
     }
+
+    fun mostraDadoOnClick(view: View){
+
+        val valor = editTextValorReceita.text
+        val valorString = valor.toString()
+        val data = editTextDataReceita.text
+        val categoria = editTextCategoriaReceita.text
+        val descricao = editTextDescricaoReceita.text
+
+        val m = Movimentacao(valorString.toDouble(), data.toString(),categoria.toString(),descricao.toString() ,"Receita")
+        m.adicionaMovimentacao()
+        atualizaRecycler()
+    }
+
+    fun atualizaRecycler(){
+        val lista: ArrayList<Movimentacao> = ListaGlobal().retornaListaMovimentacao()
+        recyclerReceitas.adapter = AdapterMovimentacoes(lista, this)
+        recyclerReceitas.layoutManager = LinearLayoutManager(this)
+    }
+
 }

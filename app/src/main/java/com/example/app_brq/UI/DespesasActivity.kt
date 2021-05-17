@@ -2,13 +2,14 @@ package com.example.app_brq.UI
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.app_brq.R
 import com.example.app_brq.UI.adapter.AdapterMovimentacoes
 import com.example.app_brq.UI.model.Movimentacao
-import com.github.clans.fab.FloatingActionButton
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class DespesasActivity : AppCompatActivity() {
 
@@ -19,8 +20,7 @@ class DespesasActivity : AppCompatActivity() {
     lateinit var editTextDescricaoDespesa: TextView
     lateinit var fabDespesa: FloatingActionButton
 
-    lateinit var arrayDeDespesas: ArrayList<Movimentacao>
-    var movimentacao = Movimentacao(0.0, "","","" )
+    lateinit var listaMovimentacoesBanco: ArrayList<Movimentacao>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,9 +29,6 @@ class DespesasActivity : AppCompatActivity() {
         carregarElementos()
         carregarEventos()
 
-        arrayDeDespesas = movimentacao.carregaListaDespesas()
-        recyclerDespesas.adapter = AdapterMovimentacoes(arrayDeDespesas, this)
-        recyclerDespesas.layoutManager = LinearLayoutManager(this)
     }
     private fun carregarElementos() {
         recyclerDespesas = findViewById(R.id.recyclerDespesas)
@@ -39,10 +36,31 @@ class DespesasActivity : AppCompatActivity() {
         editTextDataDespesa = findViewById(R.id.editTextDataDespesa)
         editTextCategoriaDespesa = findViewById(R.id.editTextCategoriaDespesa)
         editTextDescricaoDespesa = findViewById(R.id.editTextDescricaoDespesa)
-
+        fabDespesa = findViewById(R.id.fabDespesa)
     }
 
     private fun carregarEventos() {
+        //Recuperando lista de movimentações pelo Bundle para popular
+        listaMovimentacoesBanco = intent.getSerializableExtra("listaMovimentacoesBanco") as ArrayList<Movimentacao>
 
+        atualizaRecycler(listaMovimentacoesBanco)
+    }
+
+    fun mostraDadoOnClick(view: View) {
+        val valor = "-" + editTextValorDespesa.text
+        val valorString = valor.toString()
+        val data = editTextDataDespesa.text
+        val categoria = editTextCategoriaDespesa.text
+        val descricao = editTextDescricaoDespesa.text
+
+        val dados = Movimentacao( valorString.toDouble(), data.toString(), categoria.toString(), descricao.toString(), "Receita")
+
+        listaMovimentacoesBanco.add(dados)
+        atualizaRecycler(listaMovimentacoesBanco)
+    }
+
+    fun atualizaRecycler(listaMovimentacoesBanco: ArrayList<Movimentacao>) {
+        recyclerDespesas.adapter = AdapterMovimentacoes(listaMovimentacoesBanco, this)
+        recyclerDespesas.layoutManager = LinearLayoutManager(this)
     }
 }
