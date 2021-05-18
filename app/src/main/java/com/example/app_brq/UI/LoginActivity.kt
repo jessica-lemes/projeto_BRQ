@@ -31,7 +31,8 @@ class LoginActivity() : AppCompatActivity() {
             val senha = campoSenha.text.toString()
             if (email.isEmpty() == true){
                 campoEmail.error = "campo em branco"
-
+            }else if (senha.isEmpty() == true){
+                campoSenha.error = "campo em branco"
             }else if ((email != "gabriel@brq.com" && senha != "123") || (email != "jessica@brq.com" && senha != "123") || (email != "flavia@brq.com" && senha != "123")) {
                 Intent(this,CadastroActivity::class.java).apply {
                     startActivity(this)
