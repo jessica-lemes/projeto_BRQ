@@ -53,14 +53,14 @@
         android:ems="10"
         android:hint="@string/placeholder_email"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/inputSenha"
+        app:layout_constraintBottom_toTopOf="@+id/inputSenhaCad"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inputCPF" />
 
     <EditText
-        android:id="@+id/inputSenha"
+        android:id="@+id/inputSenhaCad"
         android:layout_width="379dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -75,7 +75,6 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inputEmailP" />
-
     <EditText
         android:id="@+id/inputConfirmaSenha"
         android:layout_width="379dp"
@@ -91,7 +90,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputSenha" />
+        app:layout_constraintTop_toBottomOf="@+id/inputSenhaCad" />
 
     <Button
         android:id="@+id/btnCadastrar"
