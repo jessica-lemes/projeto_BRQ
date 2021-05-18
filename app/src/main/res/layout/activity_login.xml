@@ -10,7 +10,7 @@
 
 
     <EditText
-        android:id="@+id/inputEmail"
+        android:id="@+id/inputEmailP"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -41,7 +41,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/inputEmailP" />
 
 
     <TextView
@@ -51,7 +51,7 @@
         android:text="Bem-Vindo"
         android:textColor="#FFFFFF"
         android:textSize="45sp"
-        app:layout_constraintBottom_toTopOf="@+id/inputEmail"
+        app:layout_constraintBottom_toTopOf="@+id/inputEmailP"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
