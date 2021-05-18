@@ -60,6 +60,7 @@ class ReceitasActivity : AppCompatActivity() {
 
         val dados = Movimentacao(valorString.toDouble(), data.toString(),categoria.toString(),descricao.toString() ,"Receita")
         dados.adicionaMovimentacao()
+
         atualizaRecycler()
     }
 
