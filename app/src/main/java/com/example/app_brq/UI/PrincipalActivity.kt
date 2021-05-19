@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.app_brq.R
 import com.example.app_brq.UI.adapter.AdapterMovimentacoes
 import com.example.app_brq.UI.model.Movimentacao
+import com.github.clans.fab.FloatingActionMenu
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView
 import com.prolificinteractive.materialcalendarview.OnMonthChangedListener
 
@@ -20,6 +21,7 @@ class PrincipalActivity : AppCompatActivity() {
     lateinit var textUsuario: TextView
     lateinit var textSaldo: TextView
     lateinit var recyclerView: RecyclerView
+    lateinit var floatActionMenu: FloatingActionMenu
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +41,7 @@ class PrincipalActivity : AppCompatActivity() {
         textSaldo = findViewById(R.id.textSaldo)
         textUsuario = findViewById(R.id.textUsuario)
         recyclerView = findViewById(R.id.recyclerPrincipal)
+        floatActionMenu  = findViewById(R.id.floatingActionMenu)
     }
 
     private fun carregarEventos() {
@@ -49,11 +52,13 @@ class PrincipalActivity : AppCompatActivity() {
     fun adicionarReceita(view: View){
         val intent = Intent(this,ReceitasActivity::class.java)
         startActivity(intent)
+        floatActionMenu.close(true)
     }
 
     fun adicionarDespesa(view: View){
         val intent = Intent(this,DespesasActivity::class.java)
         startActivity(intent)
+        floatActionMenu.close(true)
     }
 
     fun configuraCalendarView(){

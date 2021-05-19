@@ -49,8 +49,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@android:color/transparent"
-            android:hint="Ex: 13/05/2021"
-            android:inputType="date" />
+            android:enabled="true"
+            android:focusable="false"
+            android:hint="Data"
+            android:inputType="date"
+             />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -68,7 +71,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@android:color/transparent"
-            android:hint="Ex: Salário"
+            android:hint="Categoria"
             android:inputType="textShortMessage" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -87,7 +90,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@android:color/transparent"
-            android:hint="Ex: Salário mensal"
+            android:hint="Descrição"
             android:inputType="textShortMessage" />
     </com.google.android.material.textfield.TextInputLayout>
 

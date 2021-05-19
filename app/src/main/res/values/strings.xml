@@ -10,4 +10,5 @@
     <string name="placeholder_senha">Digite Sua Senha</string>
     <string name="placeholder_confirmaSenha">Confirme Sua Senha</string>
     <string name="bem_vindo">Olá, usuário</string>
+
 </resources>

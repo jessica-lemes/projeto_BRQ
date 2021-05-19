@@ -13,16 +13,17 @@
         <activity android:name=".UI.DespesasActivity" android:theme="@style/Theme.Despesas"/>
         <activity android:name=".UI.ReceitasActivity" android:theme="@style/Theme.Receitas"/>
         <activity android:name=".UI.PrincipalActivity">
-
-        </activity>
-        <activity android:name=".UI.LoginActivity" />
-        <activity android:name=".UI.CadastroActivity" />
-        <activity android:name=".UI.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+        </activity>
+        <activity android:name=".UI.LoginActivity" />
+        <activity android:name=".UI.CadastroActivity" />
+        <activity android:name=".UI.SplashActivity">
+
         </activity>
     </application>
 

@@ -100,8 +100,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="10dp"
-        android:layout_marginEnd="4dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
+        android:elevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:menu_colorNormal="@color/Cor1"
@@ -127,9 +128,7 @@
             app:fab_colorNormal="@color/Cor3"
             app:fab_label="Receita"
             app:fab_size="mini">
-
         </com.github.clans.fab.FloatingActionButton>
-
     </com.github.clans.fab.FloatingActionMenu>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
