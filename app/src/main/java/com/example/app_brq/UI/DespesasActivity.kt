@@ -35,7 +35,6 @@ class DespesasActivity : AppCompatActivity() {
         carregarElementos()
         carregarEventos()
         carregaCalendario()
-
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
@@ -67,6 +66,7 @@ class DespesasActivity : AppCompatActivity() {
 
         val dados = Movimentacao( valor.toDouble(), data.toString(), categoria.toString(), descricao.toString(), "Despesa")
         dados.adicionaMovimentacao()
+        limpaCampos()
         atualizaRecycler()
     }
 
@@ -91,5 +91,11 @@ class DespesasActivity : AppCompatActivity() {
 
             datePicker.show()
         }
+    }
+    fun limpaCampos(){
+        editTextValorDespesa.text = null
+        editTextDataDespesa.text = null
+        editTextCategoriaDespesa.text = null
+        editTextDescricaoDespesa.text = null
     }
 }

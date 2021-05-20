@@ -7,6 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.app_brq.R
 import com.example.app_brq.UI.adapter.viewholder.ViewHolderMovimentacao
 import com.example.app_brq.UI.model.Movimentacao
+import java.text.NumberFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class AdapterMovimentacoes(val arrayDeMovimentacao: ArrayList<Movimentacao>, val context: Context):
         RecyclerView.Adapter<ViewHolderMovimentacao>() {
@@ -18,7 +21,12 @@ class AdapterMovimentacoes(val arrayDeMovimentacao: ArrayList<Movimentacao>, val
 
     override fun onBindViewHolder(holder: ViewHolderMovimentacao, position: Int) {
         arrayDeMovimentacao[position].apply {
-            holder.textViewValor.text = this.valor.toString()
+
+            val country = "BR"
+            val language = "pt"
+            val saldoFormatado = NumberFormat.getCurrencyInstance(Locale(language, country)).format(this.valor)
+
+            holder.textViewValor.text = saldoFormatado
             holder.textViewData.text = this.data
             holder.textViewCategoria.text = this.categoria
             holder.textViewDescricao.text = this.descricao

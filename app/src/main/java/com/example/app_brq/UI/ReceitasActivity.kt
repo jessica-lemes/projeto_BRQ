@@ -36,14 +36,14 @@ class ReceitasActivity : AppCompatActivity() {
         carregarElementos()
         carregarEventos()
         carregaCalendario()
-
-
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onRestart() {
         super.onRestart()
         carregarElementos()
         carregarEventos()
+        carregaCalendario()
     }
 
     private fun carregarElementos() {
@@ -69,7 +69,7 @@ class ReceitasActivity : AppCompatActivity() {
 
         val dados = Movimentacao(valorString.toDouble(), data.toString(),categoria.toString(),descricao.toString() ,"Receita")
         dados.adicionaMovimentacao()
-
+        limpaCampos()
         atualizaRecycler()
     }
 
@@ -94,8 +94,12 @@ class ReceitasActivity : AppCompatActivity() {
 
             datePicker.show()
         }
+    }
 
-
-
+    fun limpaCampos(){
+        editTextValorReceita.text = null
+        editTextDataReceita.text = null
+        editTextCategoriaReceita.text = null
+        editTextDescricaoReceita.text = null
     }
 }
