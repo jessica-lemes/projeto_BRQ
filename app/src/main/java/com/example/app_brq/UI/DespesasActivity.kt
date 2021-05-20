@@ -13,6 +13,7 @@ import com.example.app_brq.R
 import com.example.app_brq.UI.adapter.AdapterMovimentacoes
 import com.example.app_brq.UI.model.Movimentacao
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import java.text.NumberFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -60,12 +61,11 @@ class DespesasActivity : AppCompatActivity() {
 
     fun mostraDadoOnClick(view: View) {
         val valor = "-" + editTextValorDespesa.text
-        val valorString = valor.toString()
         val data = editTextDataDespesa.text
         val categoria = editTextCategoriaDespesa.text
         val descricao = editTextDescricaoDespesa.text
 
-        val dados = Movimentacao( valorString.toDouble(), data.toString(), categoria.toString(), descricao.toString(), "Despesa")
+        val dados = Movimentacao( valor.toDouble(), data.toString(), categoria.toString(), descricao.toString(), "Despesa")
         dados.adicionaMovimentacao()
         atualizaRecycler()
     }

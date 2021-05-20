@@ -14,6 +14,7 @@ import com.example.app_brq.R
 import com.example.app_brq.UI.adapter.AdapterMovimentacoes
 import com.example.app_brq.UI.model.Movimentacao
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import java.text.NumberFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -52,7 +53,6 @@ class ReceitasActivity : AppCompatActivity() {
         editTextCategoriaReceita = findViewById(R.id.editTextCategoriaReceita)
         editTextDescricaoReceita = findViewById(R.id.editTextDescricaoReceita)
         fabReceita = findViewById(R.id.fabReceita)
-
     }
 
     private fun carregarEventos() {

@@ -1,10 +1,13 @@
 package com.example.app_brq.UI
 
 import android.content.Intent
+import android.icu.text.Collator.getDisplayName
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.app_brq.R
@@ -13,7 +16,9 @@ import com.example.app_brq.UI.model.Movimentacao
 import com.github.clans.fab.FloatingActionMenu
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView
 import com.prolificinteractive.materialcalendarview.OnMonthChangedListener
-
+import java.text.NumberFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class PrincipalActivity : AppCompatActivity() {
 
@@ -47,6 +52,7 @@ class PrincipalActivity : AppCompatActivity() {
     private fun carregarEventos() {
         configuraCalendarView()
         atualizaRecycler()
+        atualizaSaldo()
     }
 
     fun adicionarReceita(view: View){
@@ -73,10 +79,17 @@ class PrincipalActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
     }
 
-//    fun atualizaSaldo(){
-//        var saldo = 0.0
-//        var lista: ArrayList<Movimentacao> = ListaGlobal.retornaListaMovimentacao()
-//        var valor: Movimentacao = lista[0]
-//    }
+    fun atualizaSaldo(){
+        var soma = 0.0
+        var lista: ArrayList<Movimentacao> = ListaGlobal.retornaListaMovimentacao()
+        for (item in lista) {
+            soma = soma + item.valor
+        }
+        val country = "BR"
+        val language = "pt"
+        val somaFormatada = NumberFormat.getCurrencyInstance(Locale(language, country)).format(soma)
 
+        textSaldo.text  = somaFormatada
+
+    }
 }
