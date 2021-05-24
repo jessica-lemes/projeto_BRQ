@@ -28,7 +28,7 @@ class CadastroActivity : AppCompatActivity() {
         nome = findViewById(R.id.inputNome)
         cpf = findViewById(R.id.inputCPF)
         email = findViewById(R.id.inputEmailP)
-        senha = findViewById(R.id.inputSenha)
+        senha = findViewById(R.id.inputSenhaCad)
         ConfirmSenha = findViewById(R.id.inputConfirmaSenha)
         btn = findViewById(R.id.btnCadastrar)
         telacad = findViewById(R.id.TelaCad)

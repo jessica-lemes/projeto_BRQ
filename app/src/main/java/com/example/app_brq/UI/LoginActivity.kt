@@ -11,6 +11,7 @@ class LoginActivity() : AppCompatActivity() {
     lateinit var campoEmail: EditText
     lateinit var campoSenha: EditText
     lateinit var botaoEnviar: Button
+    lateinit var botaoCadastrar: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,24 +24,38 @@ class LoginActivity() : AppCompatActivity() {
         campoEmail = findViewById(R.id.inputEmailP)
         campoSenha = findViewById(R.id.inputSenha)
         botaoEnviar = findViewById(R.id.btnLogin)
+        botaoCadastrar = findViewById(R.id.btnCadastro)
     }
 
     private fun carregarEventos() {
+        login()
+        cadastro()
+    }
+
+    private fun login(){
         botaoEnviar.setOnClickListener {
             val email = campoEmail.text.toString()
             val senha = campoSenha.text.toString()
-            if (email.isEmpty() == true){
+            if (email.isEmpty() == true) {
                 campoEmail.error = "campo em branco"
-            }else if (senha.isEmpty() == true){
+            } else if (senha.isEmpty() == true) {
                 campoSenha.error = "campo em branco"
-            }else if ((email != "gabriel@brq.com" && senha != "123") || (email != "jessica@brq.com" && senha != "123") || (email != "flavia@brq.com" && senha != "123")) {
-                Intent(this,CadastroActivity::class.java).apply {
+            } else if ((email != "gabriel@brq.com" && senha != "123") || (email != "jessica@brq.com" && senha != "123") || (email != "flavia@brq.com" && senha != "123")) {
+                Intent(this, CadastroActivity::class.java).apply {
                     startActivity(this)
                 }
-            }else{
-                Intent(this,PrincipalActivity::class.java).apply {
+            } else {
+                Intent(this, PrincipalActivity::class.java).apply {
                     startActivity(this)
                 }
+            }
+        }
+    }
+
+    private fun cadastro(){
+        botaoCadastrar.setOnClickListener {
+            Intent(this, CadastroActivity::class.java).apply {
+                startActivity(this)
             }
         }
     }

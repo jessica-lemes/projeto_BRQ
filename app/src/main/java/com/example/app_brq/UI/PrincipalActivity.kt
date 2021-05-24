@@ -70,8 +70,19 @@ class PrincipalActivity : AppCompatActivity() {
     fun configuraCalendarView(){
         val meses = arrayOf("Janeiro", "Fevereiro", "Março","Abril","Maio","Junho", "Julho","Agosto" ,"Setembro", "Outubro", "Novembro", "Dezembro" )
         calendarView.setTitleMonths(meses)
-        calendarView.setOnMonthChangedListener(OnMonthChangedListener { widget, date ->  })
+        calendarView.setOnMonthChangedListener(OnMonthChangedListener { widget, date ->
+            //atualizaRecyclerTeste(date.month)
+
+        })
     }
+//
+//    fun atualizaRecyclerTeste(mes: Int){
+//        val mes = calendario.get(Calendar.MONTH)
+//        val lista: ArrayList<Movimentacao> = ListaGlobal.retornaListaMovimentacao()
+//        val listaFiltradaPorMes = lista.filter { it. }
+//        recyclerView.adapter = AdapterMovimentacoes(lista, this)
+//        recyclerView.layoutManager = LinearLayoutManager(this)
+//    }
 
     fun atualizaRecycler(){
         val lista: ArrayList<Movimentacao> = ListaGlobal.retornaListaMovimentacao()

@@ -27,7 +27,7 @@ class AdapterMovimentacoes(val arrayDeMovimentacao: ArrayList<Movimentacao>, val
             val saldoFormatado = NumberFormat.getCurrencyInstance(Locale(language, country)).format(this.valor)
 
             holder.textViewValor.text = saldoFormatado
-            holder.textViewData.text = this.data
+            holder.textViewData.text = this.data.toString()
             holder.textViewCategoria.text = this.categoria
             holder.textViewDescricao.text = this.descricao
         }
