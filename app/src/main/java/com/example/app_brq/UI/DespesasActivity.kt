@@ -14,6 +14,8 @@ import com.example.app_brq.UI.adapter.AdapterMovimentacoes
 import com.example.app_brq.UI.model.Movimentacao
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.text.NumberFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -25,6 +27,7 @@ class DespesasActivity : AppCompatActivity() {
     lateinit var editTextCategoriaDespesa: TextView
     lateinit var editTextDescricaoDespesa: TextView
     lateinit var fabDespesa: FloatingActionButton
+    lateinit var dataCalendario: Calendar
 
 
     @RequiresApi(Build.VERSION_CODES.N)
@@ -58,6 +61,7 @@ class DespesasActivity : AppCompatActivity() {
         atualizaRecycler()
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     fun mostraDadoOnClick(view: View) {
         val valor = "-" + editTextValorDespesa.text
         val data = editTextDataDespesa.text
@@ -87,6 +91,7 @@ class DespesasActivity : AppCompatActivity() {
         editTextDataDespesa.setOnClickListener {
             val datePicker = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { DatePicker, ano, mes, dia ->
                 editTextDataDespesa.text = "" + dia + "/" + (mes + 1) + "/" + ano
+                //dataCalendario.set(ano,mes,dia)
             }, ano, mes, dia)
 
             datePicker.show()

@@ -14,7 +14,10 @@ import com.example.app_brq.R
 import com.example.app_brq.UI.adapter.AdapterMovimentacoes
 import com.example.app_brq.UI.model.Movimentacao
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import java.text.DateFormat
 import java.text.NumberFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -27,6 +30,7 @@ class ReceitasActivity : AppCompatActivity() {
     lateinit var editTextCategoriaReceita: TextView
     lateinit var editTextDescricaoReceita: TextView
     lateinit var fabReceita: FloatingActionButton
+    lateinit var dataCalendario: Calendar
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,6 +63,7 @@ class ReceitasActivity : AppCompatActivity() {
         atualizaRecycler()
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     fun mostraDadoOnClick(view: View){
 
         val valor = editTextValorReceita.text
@@ -67,7 +72,8 @@ class ReceitasActivity : AppCompatActivity() {
         val categoria = editTextCategoriaReceita.text
         val descricao = editTextDescricaoReceita.text
 
-        val dados = Movimentacao(valorString.toDouble(), data.toString(),categoria.toString(),descricao.toString() ,"Receita")
+
+        val dados = Movimentacao(valorString.toDouble(), data.toString() ,categoria.toString(),descricao.toString() ,"Receita")
         dados.adicionaMovimentacao()
         limpaCampos()
         atualizaRecycler()
@@ -90,6 +96,7 @@ class ReceitasActivity : AppCompatActivity() {
         editTextDataReceita.setOnClickListener {
             val datePicker = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { DatePicker, ano, mes, dia ->
                 editTextDataReceita.text = ""+dia+"/"+(mes+1)+"/"+ano
+                //dataCalendario.set(ano,mes,dia)
             }, ano, mes, dia )
 
             datePicker.show()
